@@ -2,8 +2,7 @@
 -------
 ## demo
 * [表格插件](example/table.html)
--------
-grunt运行方式
+## build
 1. 安装nodejs
 2. 安装grunt cli
 3. 进入当前项目目录运行 npm install
