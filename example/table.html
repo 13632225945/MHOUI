@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../dist/mho.all.css"/>
+<script src="../lib/jquery-1.12.4.js"></script>
+<script src="../dist/mho.all.js"></script>
+</head>
+<body>
+<script>
+var t = new MHO.table({
+  className: 'yulan',        //[String]
+	width: 1200,							//[Number]
+	height: 300,							//[Number]
+	fit: true,								//[Boolean]
+  resize: true,             //[Boolean]
+	rownumbers: true, 				//[Boolean]
+	checkboxs: true,					//[Boolean]
+	singleSelect: true,				//[Boolean]
+	checkOnSelect: true,			//[Boolean]
+  columns: [[
+		{field: 'oprate',text: 'Oprate',width: 100,colspan: 1,rowspan: 1,sortable: null,formatter: function(index, value, row, $td) {
+				var $a = $('<a href="#">删除</a>   <a href="#">修改</a>');
+        return $a;
+			}
+    },
+    {field: 'id',text: 'ID',colspan: 1,rowspan: 1,sortable: null,formatter: null},
+    {field: 'sex',text: 'Sex',width: 100,colspan: 1,rowspan: 1,sortable: null,formatter: null},
+    {field: 'address',text: 'Address',width: 1000,colspan: 1,rowspan: 1,sortable: null,formatter: null},
+    {field: 'wife',text: 'Wife',width: 120,colspan: 1,rowspan: 1,sortable: null,formatter: null},
+    {field: 'son',text: 'Son',width: 120,colspan: 1,rowspan: 1,sortable: null,formatter: null},
+    {field: 'firstName',text: 'First Name',width: 120,colspan: 1,rowspan: 1,sortable: null,formatter: null},
+    {field: 'lastName',text: 'Last Name',width: 120,colspan: 1,rowspan: 1,sortable: null,formatter: null},
+		
+  ]],                       //[Array]
+	data: [
+		{id: 1, name: 'A Chen', firstName: 'Chen', lastName: 'A', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 2, name: 'B Chen', firstName: 'Chen', lastName: 'B', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 52, name: 'C Chen', firstName: 'Chen', lastName: 'C', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 43, name: 'D Chen', firstName: 'Chen', lastName: 'D', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 66, name: 'H Chen', firstName: 'Chen', lastName: 'H', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 87, name: 'Z Chen', firstName: 'Chen', lastName: 'Z', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 5, name: 'S Chen', firstName: 'Chen', lastName: 'S', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+	],												//[Array]
+	//url: 'mho-table.json',
+	pagable: true,											//[Boolean]
+	pageSize: 20,												//[Number]
+  onLoadSuccess: function(data) {
+    this.freezeRow(1);
+  },                        //[Function]
+  onClickRow: function(row) {
+    console.log(arguments);
+  },
+	onSelect: function(row) {
+		console.log(arguments);
+		console.log(this.getSelections());
+	}
+});
+//重新计算表格宽高方法
+t.resize(500,300);
+t.$el.css({'display': 'inline-block', 'margin': '20px'}).appendTo($('body'));
+var table = new MHO.table({
+  className: 'bootstrap',        //[String]
+	width: null,							//[Number]
+	height: null,							//[Number]
+	fit: false,								//[Boolean]
+  resize: true,             //[Boolean]
+	rownumbers: true, 				//[Boolean]
+	checkboxs: true,					//[Boolean]
+	singleSelect: false,			//[Boolean]
+	checkOnSelect: false,			//[Boolean]
+	rowStyler: function(row) {
+		if(row.id==1) {return 'success';}
+	},												//[Function]
+	frozenColumns: [[
+		{field: 'oprate',text: 'Oprate',width: 100,colspan: 1,rowspan: 2,sortable: null,formatter: function(index, value, row, $td) {
+				var $a = $('<a href="#">删除</a>   <a href="#">修改</a>');
+        return $a;
+			}
+    },
+		{field: 'id',text: 'ID',width: 50,colspan: 1,rowspan: 2,sortable: null,formatter: null},
+		{field: '',text: 'NAME',width: 200,colspan: 2,rowspan: 1,sortable: null,formatter: null}
+	],[
+		{field: 'firstName',text: 'First Name',width: 100,colspan: 1,rowspan: 1,sortable: null,formatter: null},
+		{field: 'lastName',text: 'Last Name',width: 100,colspan: 1,rowspan: 1,sortable: null,formatter: null}
+	]],												//[Array]
+  columns: [[
+    {field: 'sex',text: 'Sex',width: 50,colspan: 1,rowspan: 2,sortable: null,formatter: null},
+		{field: 'address',text: 'Address',width: 100,colspan: 1,rowspan: 2,sortable: null,formatter: null},
+		{field: 'family',text: 'Family',width: 100,colspan: 2,rowspan: 1,sortable: null,formatter: null},
+		
+  ],[
+    {field: 'wife',text: 'Wife',width: 100,colspan: 1,rowspan: 1,sortable: null,formatter: null},
+		{field: 'son',text: 'Son',width: 100,colspan: 1,rowspan: 1,sortable: null,formatter: null}
+  ]],                       //[Array]
+	data: [
+		{id: 1, name: 'A Chen', firstName: 'Chen', lastName: 'A', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 2, name: 'B Chen', firstName: 'Chen', lastName: 'B', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 52, name: 'C Chen', firstName: 'Chen', lastName: 'C', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 43, name: 'D Chen', firstName: 'Chen', lastName: 'D', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 66, name: 'H Chen', firstName: 'Chen', lastName: 'H', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 87, name: 'Z Chen', firstName: 'Chen', lastName: 'Z', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 5, name: 'S Chen', firstName: 'Chen', lastName: 'S', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'},
+		{id: 377, name: 'T Chen', firstName: 'Chen', lastName: 'T', sex: 'man', address: 'Hong Kong', family: '', wife: 'xiaolongnv', son: 'fangzuming'}
+	],												//[Array]
+  onLoadSuccess: function(data) {
+    this.freezeRow(1);
+  },                        //[Function]
+  onClickRow: function(row) {
+    console.log(arguments);
+  },
+	onSelect: function(row) {
+		console.log(row, this.getSelections());
+	}
+});
+table.$el.css({'display': 'inline-block', 'margin': '20px'}).appendTo($('body'));
+</script>
+</body>
+</html>

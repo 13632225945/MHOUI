@@ -8,6 +8,10 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		jshint: {
+			options: {
+				asi: true,
+				expr: true
+			},
 			src: ['Gruntfile.js', 'src/**/*.js']
 		},
 		watch: {
@@ -59,7 +63,7 @@ module.exports = function(grunt) {
 	
 	//运行方式
 	//打包所有>grunt build
-	//打包指定插件>grunt build:table,form,tab
+	//打包制定插件>grunt build:form,table（被依赖插件写在前面）
 	grunt.registerTask('build', function(modules) {
 		var jsSrc = ['src/mho.js', 'src/modules/**/*.js'],
 			jsDest = 'dist/mho.all.js',
