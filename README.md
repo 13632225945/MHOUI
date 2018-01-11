@@ -1,6 +1,8 @@
 # MHOUI
 -------
-[表格插件](example/table.html)
+## demo
+* [表格插件](example/table.html)
+-------
 grunt运行方式
 1. 安装nodejs
 2. 安装grunt cli
