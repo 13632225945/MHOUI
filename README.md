@@ -1,7 +1,7 @@
 # MHOUI
 -------
 ## demo
-* [表格插件](example/table.html)
+* [表格插件](https://13632225945.github.io/MHOUI/example/table.html)
 ## build
 1. 安装nodejs
 2. 安装grunt cli
